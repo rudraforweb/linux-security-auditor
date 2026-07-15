@@ -1,5 +1,7 @@
 # Linux Security Auditor
-
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![Platform](https://img.shields.io/badge/platform-Linux-green)
+![Status](https://img.shields.io/badge/status-WIP-orange)
 > 🚧 This project is currently a work in progress.
 
 A Python-based security auditing tool for Linux systems.
