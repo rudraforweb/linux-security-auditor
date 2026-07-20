@@ -2,6 +2,7 @@
 
 from checks.system_info import get_system_info
 from checks.check_privileges import check_privileges
+import checks.check_firewalls as firewall_check
 
 print("""
 Linux Security Auditor
@@ -31,4 +32,13 @@ Privilege Audit
 
 
 for key, value in privilege_info.items():
+    print(f"{key}: {value}")
+
+print("""
+Firewall Audit
+---------------
+""")
+
+firewall_info = firewall_check.check_firewall()
+for key, value in firewall_info.items():
     print(f"{key}: {value}")

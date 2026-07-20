@@ -5,7 +5,11 @@ def check_ufw():
     if shutil.which('ufw') is not None:
         installed = True
     else:
-        installed = False
+        return {
+            "ufw_installed": False,
+            "active": False
+        }
+
 
     result = subprocess.run(["ufw", "status"], capture_output=True, text=True)
     if "ERROR" in result.stdout or "ERROR" in result.stderr:
@@ -43,3 +47,26 @@ def check_firewalld():
         "firewalld_installed": installed,
         "active": active
     }
+
+def check_firewall():
+    ufw = check_ufw()
+    firewalld = check_firewalld()
+
+    if ufw["active"]:
+        return {
+            "firewall": "ufw",
+            "installed": ufw["ufw_installed"],
+            "active": ufw["active"]
+        }
+    elif firewalld["active"]:
+        return {
+            "firewall": "firewalld",
+            "installed": firewalld["firewalld_installed"],
+            "active": firewalld["active"]
+        }
+    else:
+        return {
+            "firewall": None,
+            "installed": False,
+            "active": False
+        }
