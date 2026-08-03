@@ -1,5 +1,7 @@
 # Main program
 
+import datetime
+import json
 from checks.system_info import get_system_info
 from checks.check_privileges import check_privileges
 import checks.check_firewalls as firewall_check
@@ -9,12 +11,20 @@ Linux Security Auditor
 ======================
       """)
 
+
+now = datetime.datetime.now()
+
+print(f"Report generated on: {now.strftime('%Y-%m-%d %H:%M:%S')}\n")
+
+
 system_info = get_system_info()
 privilege_info = check_privileges()
+firewall_info = firewall_check.check_firewall()
 
 report = {
     "system": system_info,
-    "privileges": check_privileges
+    "privileges": privilege_info,
+    "firewall": firewall_info
 }
 
 print("""
@@ -39,6 +49,15 @@ Firewall Audit
 ---------------
 """)
 
-firewall_info = firewall_check.check_firewall()
+
 for key, value in firewall_info.items():
     print(f"{key}: {value}")
+
+print("\nGenerating report...")
+
+filename = f"report_{now.strftime('%Y-%m-%d_%H-%M-%S')}.json"
+
+with open(f"reports/{filename}", "w") as report_file:
+    json.dump(report, report_file, indent=4)
+
+print(f"Report saved to the reports directory as {filename}")
