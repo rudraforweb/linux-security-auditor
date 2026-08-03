@@ -17,16 +17,16 @@ The goal of this project is to learn more about Linux by building a practical au
 - Collects hostname information
 - Detects Linux distribution
 - Detects kernel version
+- Check user privileges
+- Generate security reports
 
 ## Planned Features
 
-- [ ] Check user privileges
 - [ ] Audit sudo users
 - [ ] Check firewall status
 - [ ] Analyze open ports
 - [ ] Review SSH configuration
 - [ ] Check available updates
-- [ ] Generate security reports
 
 ## Requirements
 
