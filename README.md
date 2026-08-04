@@ -40,7 +40,7 @@ The goal of this project is to learn more about Linux by building a practical au
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/rudraforweb/linux-security-auditor.git
 cd linux-security-auditor
 ```
 Install dependencies:
