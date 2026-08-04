@@ -19,12 +19,11 @@ The goal of this project is to learn more about Linux by building a practical au
 - Detects kernel version
 - Check user privileges
 - Generate security reports
+- Audit sudo users
+- Check firewall status
+- Analyze open ports
 
 ## Planned Features
-
-- [ ] Audit sudo users
-- [ ] Check firewall status
-- [ ] Analyze open ports
 - [ ] Review SSH configuration
 - [ ] Check available updates
 
