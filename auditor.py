@@ -6,6 +6,7 @@ from checks.system_info import get_system_info
 from checks.check_privileges import check_privileges
 import checks.check_firewalls as firewall_check
 from checks.check_open_ports import check_open_ports, print_open_ports
+from checks.check_admin_users import get_admin_users
 
 print("""
 Linux Security Auditor
@@ -22,12 +23,14 @@ system_info = get_system_info()
 privilege_info = check_privileges()
 firewall_info = firewall_check.check_firewall()
 open_ports_info = check_open_ports()
+admin_users = get_admin_users()
 
 report = {
     "system": system_info,
     "privileges": privilege_info,
+    "admin_users": admin_users,
     "firewall": firewall_info,
-    "open_ports": open_ports_info
+    "open_ports": open_ports_info,
 }
 
 print("""
@@ -46,6 +49,10 @@ Privilege Audit
 
 for key, value in privilege_info.items():
     print(f"{key}: {value}")
+
+print("admin users:", end=" ")
+for user in admin_users:
+    print(f"- {user}")
 
 print("""
 Firewall Audit

@@ -26,7 +26,8 @@ def check_open_ports():
 
 def print_open_ports(ports):
     for port in ports:
-        print(
-            f"{port['protocol'].upper()} {port['port']} - "
-            f"{'Network accessible' if port['exposure'] else 'Local only'}"
-        )
+        if port["exposure"]:
+            print(
+                f"{port['protocol'].upper()} {port['port']} - "
+                "Network accessible"
+            )
