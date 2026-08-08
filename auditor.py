@@ -2,11 +2,15 @@
 
 import datetime
 import json
+
+
 from checks.system_info import get_system_info
 from checks.check_privileges import check_privileges
 import checks.check_firewalls as firewall_check
 from checks.check_open_ports import check_open_ports, print_open_ports
 from checks.check_admin_users import get_admin_users
+from checks.check_ssh import check_ssh
+from checks.check_updates import check_updates
 
 print("""
 Linux Security Auditor
@@ -24,6 +28,9 @@ privilege_info = check_privileges()
 firewall_info = firewall_check.check_firewall()
 open_ports_info = check_open_ports()
 admin_users = get_admin_users()
+ssh_info = check_ssh()
+updates_info = check_updates()  
+
 
 report = {
     "system": system_info,
@@ -31,6 +38,8 @@ report = {
     "admin_users": admin_users,
     "firewall": firewall_info,
     "open_ports": open_ports_info,
+    "ssh": ssh_info,
+    "updates": updates_info
 }
 
 print("""
@@ -70,6 +79,24 @@ Open Ports Audit
 """)
 
 print_open_ports(open_ports_info)
+
+print("""
+SSH Audit
+---------
+""")
+
+for key, value in ssh_info.items():
+    print(f"{key}: {value}")
+
+
+print("""
+Available Updates
+-------------
+""")
+
+for key, value in updates_info.items():
+    print(f"{key}: {value}")
+
 
 print("\nGenerating report...")
 
