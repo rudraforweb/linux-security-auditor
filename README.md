@@ -1,8 +1,6 @@
 # Linux Security Auditor
 ![Python](https://img.shields.io/badge/python-3.10+-blue)
 ![Platform](https://img.shields.io/badge/platform-Linux-green)
-![Status](https://img.shields.io/badge/status-WIP-orange)
-> 🚧 This project is currently a work in progress.
 
 A Python-based security auditing tool for Linux systems.
 
@@ -22,10 +20,11 @@ The goal of this project is to learn more about Linux by building a practical au
 - Audit sudo users
 - Check firewall status
 - Analyze open ports
+- Review SSH configuration
+- Check available updates
 
 ## Planned Features
-- [ ] Review SSH configuration
-- [ ] Check available updates
+- None just yet!
 
 ## Requirements
 
